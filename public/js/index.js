@@ -44,23 +44,23 @@ let allInputsValid = {
 let isValidCardNumber = (cardNumber) => {
 	let withoutBlankSpaces = cardNumber.replace(/\s/g, '');
   if (regExpNumbers.test(withoutBlankSpaces) && ((withoutBlankSpaces.length === 16 && (visa.test(withoutBlankSpaces) || master.test(withoutBlankSpace))) || (withoutBlankSpaces.length === 15 && amex.test(withoutBlankSpaces)) )) {
-    let cardNumbersUpsideDown = withoutBlankSpaces.split('').reverse(); // array de numeros al revés
+    let cardNumbersUpsideDown = withoutBlankSpaces.split('').reverse(); 
     let counterOfEvenNumbers = 1; // contador de posiciones pares (impares en js)
     let sum = 0; // almacenar la suma de los numeros de la tarjeta  
     cardNumbersUpsideDown.forEach((numb, index) => {
       cardNumbersUpsideDown[index] = parseInt(numb);
       if (index === counterOfEvenNumbers) {
-        cardNumbersUpsideDown[index] *= 2; // multiplicar por 2 los numeros de las posiciones pares(impares en js)
+        cardNumbersUpsideDown[index] *= 2;
         if (cardNumbersUpsideDown[index] >= 10) {
-          cardNumbersUpsideDown[index] = cardNumbersUpsideDown[index].toString(); // convertir el numero en string
+          cardNumbersUpsideDown[index] = cardNumbersUpsideDown[index].toString();
           let separateNumbers = cardNumbersUpsideDown[index].split('');
           separateNumbers[0] = parseInt(separateNumbers[0]);
           separateNumbers[1] = parseInt(separateNumbers[1]);
-          cardNumbersUpsideDown[index] = separateNumbers[0] + separateNumbers[1]; // sumar las cifras
+          cardNumbersUpsideDown[index] = separateNumbers[0] + separateNumbers[1];
         }
-        counterOfEvenNumbers += 2; // De lo contrario si la multiplicación es menor que 10 aumentar j en 2
+        counterOfEvenNumbers += 2; 
       }
-      sum += cardNumbersUpsideDown[index]; // suma de numeros en posiciones impares y nuevos numeros en posiciones pares
+      sum += cardNumbersUpsideDown[index];
     });
     sum % 10 === 0 ? sentinelCardNumber = true : sentinelCardNumber = false;
   } else {
