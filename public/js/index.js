@@ -178,16 +178,6 @@ let addClassHtml = (newClass, oldClass, name, cardNumber, cvv, month, year) => {
   year.classList.remove(oldClass);   
 }
 
-let probando = (validationFunction, inputToValidate) => {
-	if(validationFunction){
-		inputToValidate.classList.add('success');
-		inputToValidate.classList.remove('error');
-	} else {
-		inputToValidate.classList.add('error');
-		inputToValidate.classList.remove('success');
-	}
-}
-
 // Testing: General function.
 
 let anielCard = (name, cardNumber, cvv, month, year) => { 
@@ -206,13 +196,13 @@ let anielCard = (name, cardNumber, cvv, month, year) => {
   // verificar que todos los inputs cumplan la condición
   if (sentinelCardNumber && sentinelDueDate && sentinelName && sentinelVerificationCode) {
     allInputsValid['card valid']['valid'] = true;
+    addClassHtml('success','error', name, cardNumber, cvv, month, year);
   }
   else {
     allInputsValid['card valid']['valid'] = false;
+    addClassHtml('error','success', name, cardNumber, cvv, month, year);    
   }
-	console.log(allInputsValid);
   modifyReturnObject();
-  return allInputsValid;
-	
+  return allInputsValid;	
 };
 
