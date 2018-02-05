@@ -73,42 +73,46 @@
           <ul>
             <li class="show" lang="en">All parameters of the function anielCard must be complete.</li>
             <li class="hide" lang="es">Todos los parametros de la funcion anielCard deben estar completos.</li>
-            <li class="show" lang="en">Response value is of type
-                <b lang="en">Boolean</b> .</li>
+            <li class="show" lang="en">The response value is of type
+              <b lang="en">JSON</b> .</li>
             <li class="hide" lang="es">El valor de respuesta es de tipo
-                <b lang="es">Boleano</b> .</li>
+              <b lang="es">JSON</b> .</li>
             <li class="show" lang="en">Otherwise the return value will be TRUE or FALSE</li>
             <li class="hide" lang="es">De lo contrario, el valor de retorno será VERDADERO o FALSO</li>
             <li class="show" lang="en">If return TRUE card is VALID</li>
             <li class="hide" lang="es">Si retorna VERDADERO, la tarjeta es válida</li>
             <li class="show" lang="en">If return FALSE card is INVALID</li>
             <li class="hide" lang="es">Si retorna FALSO la tarjeta es inválida</li>
-            <li  lang="en">It is recommended that each of the inputs have a unique 'id' .</li>
-            <li  lang="es">Se recomienda que cada uno de los inputs tenga un unico 'id'</li>
-            <li  lang="en">For now it is only accepted that the inputs sent as arguments have been selected with 'Vanilla Js'.</li>
-            <li  lang="es">Por ahora solo se acepta que los inputs mandados como argumentos hayan sido seleccionados con 'Vanilla Js'</li>
+            <li lang="en">It is recommended that each of the inputs have a unique 'id' .</li>
+            <li lang="es">Se recomienda que cada uno de los inputs tenga un unico 'id'</li>
+            <li lang="en">For now it is only accepted that the inputs sent as arguments have been selected with 'Vanilla Js'.</li>
+            <li lang="es">Por ahora solo se acepta que los inputs mandados como argumentos hayan sido seleccionados con 'Vanilla Js'</li>
           </ul>
         </div>
         <div class="col-10 col-sm-4 my-2 bg-code">
-          <code><span lang="en" class="show">// declare variables that select the inputs</span>
-          <span lang="es" class="hide">// declare variables que sean equivalentes al input</span>
-          <br>
-          <p class="code">let name = document.getElementById('name')</p>
-          <p class="code">let cardNumber = document.getElementById('card-number')</p>
-          <p class="code">let cvv = document.getElementById('cvv')</p>
-          <p class="code">let month = document.getElementById('month')</p>
-          <p class="code">let year = document.getElementById('year')</p>
-          <code><span lang="en" class="show">// call the function anielCard</span>
-          <span lang="es" class="hide">// Llame la funcion anielCard</span>
-            <br><span lang="en" class="show">// all parameters refer to an input (DOM)</span>
-            <span lang="es" class="hide">// todos los parámetros se refieren a una entrada (DOM)</span>
+          <code>
+            <span lang="en" class="show">// declare variables that select the inputs</span>
+            <span lang="es" class="hide">// declare variables que sean equivalentes al input</span>
+            <br>
+            <p class="code">let name = document.getElementById('name')</p>
+            <p class="code">let cardNumber = document.getElementById('card-number')</p>
+            <p class="code">let cvv = document.getElementById('cvv')</p>
+            <p class="code">let month = document.getElementById('month')</p>
+            <p class="code">let year = document.getElementById('year')</p>
+            <code>
+              <span lang="en" class="show">// call the function anielCard</span>
+              <span lang="es" class="hide">// Llame la funcion anielCard</span>
+              <br>
+              <span lang="en" class="show">// all parameters refer to an input (DOM)</span>
+              <span lang="es" class="hide">// todos los parámetros se refieren a una entrada (DOM)</span>
             </code>
-          <p class="code"> anielCard(name, cardNumber, cvv, month, year);</p>
-        </code>
+            <p class="code"> anielCard(name, cardNumber, cvv, month, year);</p>
+          </code>
         </div>
       </div>
     </div>
   </section>
+
   <section>
     <div class="container-fluid">
       <div class="row justify-content-center">
@@ -116,76 +120,136 @@
         <h3 lang="es" class="text-center my-2 py-2 hide">Ejemplo</h3>
       </div>
       <div class="row justify-content-center my-3">
-        <form class="col-12 col-sm-7">
-          <div class="form-row justify-content-center">
-            <div class="form-group col-sm-4">
-              <label class="show" lang="en" for="card-number">Card Number</label>
-              <label class="hide" lang="es" for="card-number">Numero de tarjeta</label>
-              <input type="text" lang="en" class="form-control" id="card-number" placeholder="card number">
-              <input type="text" lang="es" class="form-control" id="card-number" placeholder="numero de tarjeta">
+        <div class="col-12 col-sm-7">
+          <form class="my-2 py-2">
+            <div class="form-row justify-content-center">
+              <div class="form-group col-sm-4">
+                <label class="show" lang="en" for="card-number">Card Number</label>
+                <label class="hide" lang="es" for="card-number">Numero de tarjeta</label>
+                <input type="text" lang="en" class="form-control" id="card-number" placeholder="card number">
+                <input type="text" lang="es" class="form-control" id="card-number" placeholder="numero de tarjeta">
+              </div>
+              <div class="form-group col-sm-2">
+                <label for="cvv">CVV</label>
+                <input type="text" class="form-control" id="cvv">
+              </div>
+              <div class="form-group col-sm-1">
+                <label class="show" lang="en" for="month">Month</label>
+                <label class="hide" lang="es" class="hide" for="month">Mes</label>
+                <input type="text" class="form-control" id="month">
+              </div>
+              <div class="form-group col-sm-2">
+                <label class="show" lang="en" for="year">Year</label>
+                <label lang="es" class="hide" for="year">Año</label>
+                <input type="text" class="form-control" id="year">
+              </div>
             </div>
-            <div class="form-group col-sm-2">
-              <label for="cvv">CVV</label>
-              <input type="text" class="form-control" id="cvv">
+            <div class="form-row justify-content-center">
+              <div class="form-group col-sm-9">
+                <label class="show" lang="en" for="name">Name of Card</label>
+                <label lang="es" class="hide" for="name">Nombre de la tarjeta</label>
+                <input type="text" lang="en" class="form-control" id="name" placeholder="name of Card">
+                <input type="text" lang="es" class="form-control" id="name" placeholder="nombre de tarjeta">
+              </div>
             </div>
-            <div class="form-group col-sm-1">
-              <label class="show" lang="en" for="month">Month</label>
-              <label class="hide" lang="es" class="hide" for="month">Mes</label>
-              <input type="text" class="form-control" id="month">
+            <div class="form-row justify-content-center">
+              <button lang="en" type="submit" class="btn btn-success show" id="btn-submit">Submit</button>
+              <button lang="es" type="submit" class="btn btn-success hide" id="btn-submit">Enviar</button>
             </div>
-            <div class="form-group col-sm-2">
-              <label class="show" lang="en" for="year">Year</label>
-              <label lang="es" class="hide" for="year">Año</label>
-              <input type="text" class="form-control" id="year">
+            <div class="form-row justify-content-center my-3 py-2">
+              <p>
+                <span id="message"> ... </span>
+              </p>
             </div>
+          </form>
+          <hr>
+          <div class="my-2 py-2">
+            <h3 lang="en" class="text-start my-2 py-2 show">Why a JSON?</h3>
+            <h3 lang="es" class="hide">¿Por qué un JSON?</h3>
+            <p lang="en" class="show">The return value of AnielCard is JSON format, because it is a light text format for data exchange. Allowing developers
+              to send personalized messages to their users indicating where an error was made, save the information returned
+              in a database like Firebase and a million ways in which our developers can manipulate this data for their benefit.</p>
+            <p lang="es" class="hide">El valor de retorno de AnielCard es formato JSON, porque es un formato de texto ligero para el intercambio de
+              datos. Permitiendo a los desarrolladores enviar mensajes personalizados a sus usuarios indicando dónde se cometió
+              un error, guardar la información retornada en una base de datos como Firebase y un millón de formas en que
+              nuestros desarrolladores pueden manipular esta información para su beneficio.</p>
           </div>
-          <div class="form-row justify-content-center">
-            <div class="form-group col-sm-9">
-              <label class="show" lang="en" for="name">Name of Card</label>
-              <label lang="es" class="hide" for="name">Nombre de la tarjeta</label>
-              <input type="text" lang="en" class="form-control" id="name" placeholder="name of Card">
-              <input type="text" lang="es" class="form-control" id="name" placeholder="nombre de tarjeta">
-            </div>
-          </div>
-          <div class="form-row justify-content-center">
-            <button lang="en" type="submit" class="btn btn-success show" id="btn-submit">Submit</button>                      
-            <button lang="es" type="submit" class="btn btn-success hide" id="btn-submit">Enviar</button>                      
-          </div>
-          <div class="form-row justify-content-center my-3 py-2">
-            <p><span id="message"> ... </span>
-            </p>
-          </div>
-        </form>
+        </div>
         <div class="col-sm-3 my-3 py-3 bg-code">
           <code>
             <span lang="en" class="show">// return value</span>
-            <span lang="es" class="hide">// valor de retorno</span> <br>
+            <span lang="es" class="hide">// valor de retorno</span>
+            <br>
             <span id="return"></span>
-            <span>{</span> <br>
-						<span>  'card valid'  : {</span><br>
-            <span>     'valid' : <span id="card">true / false</span></span><br>
-            <span>  },</span><br>
-            <span>  'card number' : {</span><br>
-            <span>     'valid' : <span id="number-b">true / false</span>,</span><br>
-            <span>     'value' : <span id="number">undefined</span></span><br>
-            <span>  },</span><br>
-            <span>  'cvv' : {</span><br>
-            <span>     'valid' : <span id="code-b">true / false</span>,</span><br>
-            <span>     'value' : <span id="code">undefined</span></span><br>
-            <span>  },</span><br>
-            <span>  'expiration' : {</span><br>
-            <span>     'valid' : <span id="expiration-b">true / false</span>,</span><br>
-            <span>     'value' : <span id="expiration">undefined</span></span><br>
-            <span>  },</span><br>
-            <span>  'type': {</span><br>
-            <span>     'valid' : <span id="valid-type-b">true / false</span>,</span><br>
-            <span>     'value' : <span id="valid-type">undefined</span></span><br>
-            <span>  },</span><br>
-            <span>  'name': {</span><br>
-            <span>     'valid' : <span id="valid-name-b">true / false</span>,</span><br>
-            <span>     'value' : <span id="valid-name">undefined</span></span><br>
-            <span>  },</span><br>
-            <span>}</span><br>          
+            <span>{</span>
+            <br>
+            <span>&#160 'card valid' :
+              <span id="card">true / false</span>,</span>
+            <br>
+            <span>&#160 'card number' : {</span>
+            <br>
+            <span>&#160 &#160 'valid' :
+              <span id="number-b">true / false</span>,</span>
+            <br>
+            <span>&#160 &#160 'value' :
+              <span id="number">undefined</span>
+            </span>
+            <br>
+            <span>&#160 },</span>
+            <br>
+            <span>&#160 'cvv' : {</span>
+            <br>
+            <span>&#160 &#160 'valid' :
+              <span id="code-b">true / false</span>,</span>
+            <br>
+            <span>&#160 &#160 'value' :
+              <span id="code">undefined</span>
+            </span>
+            <br>
+            <span>&#160 },</span>
+            <br>
+            <span>&#160 'expiration' : {</span>
+            <br>
+            <span>&#160 &#160 'valid' :
+              <span id="expiration-b">true / false</span>,</span>
+            <br>
+            <span>&#160 &#160 'value' : { </span>
+            <br>
+            <span>&#160 &#160 &#160 'month' :
+              <span id="value-month">undefined</span>,</span>
+            <br>
+            <span>&#160 &#160 &#160 'year' :
+              <span id="value-year">undefined</span>
+            </span>
+            <br>
+            <span>&#160 &#160 },</span>
+            <br>
+            <span>&#160 },</span>
+            <br>
+            <span>&#160 'type': {</span>
+            <br>
+            <span>&#160 &#160 'valid' :
+              <span id="valid-type-b">true / false</span>,</span>
+            <br>
+            <span>&#160 &#160 'value' :
+              <span id="valid-type">undefined</span>
+            </span>
+            <br>
+            <span>&#160 },</span>
+            <br>
+            <span>&#160 'name': {</span>
+            <br>
+            <span>&#160 &#160 'valid' :
+              <span id="valid-name-b">true / false</span>,</span>
+            <br>
+            <span>&#160 &#160 'value' :
+              <span id="valid-name">undefined</span>
+            </span>
+            <br>
+            <span>&#160 },</span>
+            <br>
+            <span>}</span>
+            <br>
           </code>
         </div>
       </div>
@@ -205,7 +269,7 @@
   <!-- script -->
   <script src="vendors/jquery/dist/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-  crossorigin="anonymous"></script>
+    crossorigin="anonymous"></script>
   <script src="vendors/bootstrap/js/bootstrap.min.js"></script>
   <script src="js/index.js"></script>
   <script src="js/home.js"></script>

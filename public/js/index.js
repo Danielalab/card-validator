@@ -5,11 +5,7 @@ const masterCard = /^5[1-5][0-9]{5,}|222[1-9][0-9]{3,}|22[3-9][0-9]{4,}|2[3-6][0
 const amex = /^3[47][0-9]{5,}$/;
 const dinerClub = /^3(?:0[0-5]|[68][0-9])[0-9]{4,}$/;
 
-let numberObject;
-let cvvObject;
-let expirationObject;
 let typeObject;
-let nameObject;
 let typeOfCard;
 let sentinelCardNumber = false;
 let sentinelName = false;
@@ -28,8 +24,11 @@ let allInputsValid = {
 		'value' : undefined
 	 },
   'expiration' : {
-		'valid' : false,
-		'value' : undefined
+    'valid' : false,
+    'value' : {
+      'month' : undefined,
+      'year' : undefined,
+    } ,
 	 },
 	'type' : {
 		'valid' : false,
@@ -45,40 +44,36 @@ let allInputsValid = {
 let isValidCardNumber = (cardNumber) => {
 	let withoutBlankSpaces = cardNumber.replace(/\s/g, '');
   if (regExpNumbers.test(withoutBlankSpaces) && ((withoutBlankSpaces.length === 16 && (visa.test(withoutBlankSpaces) || master.test(withoutBlankSpace))) || (withoutBlankSpaces.length === 15 && amex.test(withoutBlankSpaces)) )) {
-    let cardNumbersUpsideDown = withoutBlankSpaces.split('').reverse(); // array de numeros al revés
+    let cardNumbersUpsideDown = withoutBlankSpaces.split('').reverse(); 
     let counterOfEvenNumbers = 1; // contador de posiciones pares (impares en js)
     let sum = 0; // almacenar la suma de los numeros de la tarjeta  
     cardNumbersUpsideDown.forEach((numb, index) => {
       cardNumbersUpsideDown[index] = parseInt(numb);
       if (index === counterOfEvenNumbers) {
-        cardNumbersUpsideDown[index] *= 2; // multiplicar por 2 los numeros de las posiciones pares(impares en js)
+        cardNumbersUpsideDown[index] *= 2;
         if (cardNumbersUpsideDown[index] >= 10) {
-          cardNumbersUpsideDown[index] = cardNumbersUpsideDown[index].toString(); // convertir el numero en string
+          cardNumbersUpsideDown[index] = cardNumbersUpsideDown[index].toString();
           let separateNumbers = cardNumbersUpsideDown[index].split('');
           separateNumbers[0] = parseInt(separateNumbers[0]);
           separateNumbers[1] = parseInt(separateNumbers[1]);
-          cardNumbersUpsideDown[index] = separateNumbers[0] + separateNumbers[1]; // sumar las cifras
+          cardNumbersUpsideDown[index] = separateNumbers[0] + separateNumbers[1];
         }
-        counterOfEvenNumbers += 2; // De lo contrario si la multiplicación es menor que 10 aumentar j en 2
+        counterOfEvenNumbers += 2; 
       }
-      sum += cardNumbersUpsideDown[index]; // suma de numeros en posiciones impares y nuevos numeros en posiciones pares
+      sum += cardNumbersUpsideDown[index];
     });
     sum % 10 === 0 ? sentinelCardNumber = true : sentinelCardNumber = false;
-		numberObject = cardNumber.replace(/\s/g, '');
   } else {
-		numberObject = cardNumber.replace(/\s/g, '');
     sentinelCardNumber = false;
-	}
+  }
 };
 
 // Name Validation
 let isValidName = (name) => {
   if (regExpText.test(name) && name.split(' ').length === 2){
-		nameObject = name;
     sentinelName = true;
 	} else
     sentinelName = false;
-	  nameObject = name;
 };
 
 // CVV validation
@@ -101,7 +96,6 @@ let cvvValidation = (typeCard, cvvNumber) => {
   } else {
     sentinelVerificationCode = false;
   }
-	cvvObject = realCVV;
 };
 
 let cardType = (numberIn) => {
@@ -149,18 +143,18 @@ let expirationDate = (month, year) => {
   } else {
     sentinelDueDate = false;
   }
-   expirationObject = actualDateJoin;
 };
 
-let modifyReturnObject = () => {
+let modifyReturnObject = (valueName, valueCardNumber, valueCvv, valueMonth, valueYear) => {
   allInputsValid['card number']['valid'] = sentinelCardNumber;
-  allInputsValid['card number']['value'] = numberObject;
+  allInputsValid['card number']['value'] = valueCardNumber;
   allInputsValid['cvv']['valid'] = sentinelVerificationCode;
-  allInputsValid['cvv']['value'] = cvvObject;
+  allInputsValid['cvv']['value'] = valueCvv;
   allInputsValid['expiration']['valid'] = sentinelDueDate;
-  allInputsValid['expiration']['value'] = expirationObject;
+  allInputsValid['expiration']['value']['month'] = valueMonth;
+  allInputsValid['expiration']['value']['year'] = valueYear;  
   allInputsValid['name']['valid'] = sentinelName;
-  allInputsValid['name']['value'] = nameObject;
+  allInputsValid['name']['value'] = valueName;
   allInputsValid['type']['valid'] = typeObject;
   allInputsValid['type']['value'] = typeOfCard;
 };
@@ -181,7 +175,7 @@ let addClassHtml = (newClass, oldClass, name, cardNumber, cvv, month, year) => {
 // Testing: General function.
 
 let anielCard = (name, cardNumber, cvv, month, year) => { 
-  let valueName = name.value;
+  let valueName = name.value; debugger;
   let valueCardNumber = cardNumber.value.replace(/\s/g, '');
   let valueCvv = cvv.value;
   let valueMonth = month.value;
@@ -196,13 +190,13 @@ let anielCard = (name, cardNumber, cvv, month, year) => {
   // verificar que todos los inputs cumplan la condición
   if (sentinelCardNumber && sentinelDueDate && sentinelName && sentinelVerificationCode) {
     allInputsValid['card valid']['valid'] = true;
-    addClassHtml('success','error', name, cardNumber, cvv, month, year);
+    addClassHtml('succes', 'error', name, cardNumber, cvv, month, year);
   }
   else {
     allInputsValid['card valid']['valid'] = false;
-    addClassHtml('error','success', name, cardNumber, cvv, month, year);    
+    addClassHtml('error', 'succces', name, cardNumber, cvv, month, year);    
   }
-  modifyReturnObject();
-  return allInputsValid;	
+  modifyReturnObject(valueName, valueCardNumber, valueCvv, valueMonth, valueYear);
+  return allInputsValid;
 };
 

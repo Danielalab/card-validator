@@ -22,8 +22,9 @@ let begin = () => {
   let numberB = $('#number-b');
   let code = $('#code');
   let codeB = $('#code-b');
-  let expiration = $('#expiration');
-  let expirationB = $('#expiration-b');
+  let expiration = $('#expiration-b');
+  let monthValue = $('#value-month');
+  let yearValue = $('#value-year');  
   let validName = $('#valid-name');
   let validNameB = $('#valid-name-b');
 	let validType = $('#valid-type');
@@ -36,8 +37,9 @@ let begin = () => {
     number.text(valueReturnAnielCard['card number']['value']);
     codeB.text(valueReturnAnielCard['cvv']['valid']);
     code.text(valueReturnAnielCard['cvv']['value']);
-    expirationB.text(valueReturnAnielCard['expiration']['valid']);
-    expiration.text(valueReturnAnielCard['expiration']['value']);
+    expiration.text(valueReturnAnielCard['expiration']['valid']);
+    monthValue.text(valueReturnAnielCard['expiration']['value']['month']);
+    yearValue.text(valueReturnAnielCard['expiration']['value']['year']);    
     validNameB.text(valueReturnAnielCard['name']['valid']);
     validName.text(valueReturnAnielCard['name']['value']);
 		validTypeB.text(valueReturnAnielCard['type']['valid']);
