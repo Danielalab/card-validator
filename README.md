@@ -9,8 +9,11 @@ _This is a **library** for the validation of the number, expiration date, verifi
 [![npm downloads](https://img.shields.io/badge/npm-5.5.2-orange.svg)](https://nodejs.org/en/download/releases/)  ![npm downloads](https://img.shields.io/badge/dependencies-none-brightgreen.svg)  ![npm downloads](https://img.shields.io/badge/devDependencies-insecure-blue.svg)
 
 ## Download
-
+1. Primero debes descargar AnielCard dando click a 'Download' en nuestra pa´gina principal .
 ![Card validation](https://raw.githubusercontent.com/Danielalab/card-validator/master/assets/img/down.gif "Card Validator")
+2. Luego debes añadir el archivo descargado a tu carpeta de trabajo junto a tu archivo javascript.
+3. Por último debes anexar el archivo *index.js* en tu archivo HTML. 
+*¡Listo!*, ahora puedes empezar a usar **AnielCard**.
 
 ## Using AnielCard.js
 
